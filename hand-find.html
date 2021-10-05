@@ -23,5 +23,47 @@
 </script>
 
 <script type="text/html" data-help-name="hand-find">
-  <p>hand-find</p>
+  <h3>info</h3>
+  <dl class="message-properties">
+    <dd>
+      입력된 media pipe의 hands 모델에 대한 유사도 체크를 하여 저장되어 있는 동작중 일치하는 동작을
+      찾아내는 노드
+    </dd>
+    <br />
+    <dd>
+      입력 받은 동작의 데이터 <span class="property-type">savedLeftHand</span>,
+      <span class="property-type">savedRightHand</span>,
+      <span class="property-type">savedNameList</span>의 같은 인덱스의 데이터들이 하나의 동작을
+      나타낸다. 유사도 검사를 통해 일치하는 데이터가 없어 경우는 false, 일치하는 데이터가 존재하는
+      경우는 ``status``에 true와 해당 동작의 이름 ``handName``을 아웃풋으로 나타낸다.
+      <span class="property-type">status</span>에 true와 해당 동작의 이름
+      <span class="property-type">handName</span>을 아웃풋으로 나타낸다.
+    </dd>
+  </dl>
+
+  <h3>input</h3>
+  <dl class="message-properties">
+    <dt>multiHandLandmarks <span class="property-type">required</span></dt>
+    <dd>media pipe hands 모델의 아웃풋. 각 손의 1~21번 포인트까지의 x,y,z 좌표값</dd>
+    <dt>mutiHandedness <span class="property-type">required</span></dt>
+    <dd>media pipe hands 모델의 아웃풋. 각 손의 정보</dd>
+    <dt>savedLeftHand <span class="property-type">required</span></dt>
+    <dd>db에 저장되어 있는 왼손 좌표의 json 배열들을 저장한 배열</dd>
+    <dt>savedRightHand <span class="property-type">required</span></dt>
+    <dd>db에 저장되어 있는 오른손 좌표의 json 배열들을 저장한 배열</dd>
+    <dt>savedNameList <span class="property-type">required</span></dt>
+    <dd>db에 저장되어 있는 오른손 좌표의 json 배열들을 저장한 배열</dd>
+    <dt>inputLeftHands <span class="property-type">required</span></dt>
+    <dd>미디어로 입력된 손동작에서 왼손의 1~21번 포인트까지의 x,y,z 좌표값</dd>
+    <dt>inputRightHands <span class="property-type">required</span></dt>
+    <dd>미디어로 입력된 손동작에서 오른손의 1~21번 포인트까지의 x,y,z 좌표값</dd>
+  </dl>
+
+  <h3>output</h3>
+  <dl class="message-properties">
+    <dt>status</dt>
+    <dd>해당 손동작의 존재 여부 false: 없는 동작, true: 있는 동작</dd>
+    <dt>handName</dt>
+    <dd>status가 true인 경우 찾아낸 동작의 이름</dd>
+  </dl>
 </script>
